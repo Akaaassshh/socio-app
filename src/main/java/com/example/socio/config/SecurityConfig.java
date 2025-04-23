@@ -1,4 +1,4 @@
-package com.example.socio.secuirty;
+package com.example.socio.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,6 +1,8 @@
 package com.example.socio.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.AssertTrue;
+import jakarta.validation.constraints.Email;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
@@ -27,6 +29,7 @@ public class User {
     @Column(nullable = false)
     private String name;
 
+    @Email(message = "Invalid email format")
     @Column(nullable = false, unique = true)
     private String email;
 
@@ -57,6 +60,11 @@ public class User {
     protected void onCreate() {
         createdAt = LocalDateTime.now();
         updatedAt = createdAt;
+    }
+
+    @AssertTrue(message = "Admin email must end with @socio.com")
+    private boolean isValidAdminEmail() {
+        return role != Role.ADMIN || email.endsWith("@socio.com");
     }
 
     @PreUpdate

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 
 @Hidden
 @ControllerAdvice
-public class ExceptionHandler {
+public class ExcHandler {
 
     @org.springframework.web.bind.annotation.ExceptionHandler(RuntimeException.class)
     public ResponseEntity<String> handleRuntimeException(RuntimeException ex) {
